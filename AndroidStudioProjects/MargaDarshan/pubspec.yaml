@@ -1,0 +1,36 @@
+name: MargaDarshan
+description: Navigation for Public Bus Transportation
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  flutter_native_splash: ^2.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter_native_splash:
+  color: "#ffffff"  #white color
+  color_dark: "#ffffff"
+  image: assets/MargaDarshan.png
+  image_dark: assets/MargaDarshan.png
+
+  android_12:
+    image: assets/MargaDarshan.png
+    icon_background_color: "#ffffff"
+    image_dark: assets/MargaDarshan.png
+    icon_background_color_dark: "#ffffff"
+
+flutter:
+  uses-material-design: true
+
+
