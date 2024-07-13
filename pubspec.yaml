@@ -19,7 +19,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter_native_splash:
-  color: "#ffffff"  #white color
+  color: "#ffffff"  
   color_dark: "#ffffff"
   image: assets/MargaDarshan.png
   image_dark: assets/MargaDarshan.png

@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-import 'route_details_page.dart'; // Import the RouteDetailsPage class
-import 'models.dart'; // Import the data models
+import 'route_details_page.dart';
+import 'models.dart';
+
 class ChooseRoutePage extends StatelessWidget {
   final String startLocation;
   final String destinationLocation;
 
-  ChooseRoutePage({required this.startLocation, required this.destinationLocation});
+  const ChooseRoutePage(
+      {super.key,
+      required this.startLocation,
+      required this.destinationLocation});
 
   @override
   Widget build(BuildContext context) {
     List<RouteData> availableRoutes = [
-      // Data 1
       RouteData(
         startLocation: 'Bagar',
         destinationLocation: 'Prithvichock',
@@ -50,7 +53,6 @@ class ChooseRoutePage extends StatelessWidget {
         ],
         fare: FareData(withStudentId: 30.0, withoutStudentId: 45.0),
       ),
-      // Data 2
       RouteData(
         startLocation: 'Lakeside',
         destinationLocation: 'Mahendrapool',
@@ -80,7 +82,6 @@ class ChooseRoutePage extends StatelessWidget {
         ],
         fare: FareData(withStudentId: 25.0, withoutStudentId: 40.0),
       ),
-      // Data 3
       RouteData(
         startLocation: 'Lamachaur',
         destinationLocation: 'Birauta',
@@ -102,46 +103,54 @@ class ChooseRoutePage extends StatelessWidget {
       ),
     ];
 
-    List<RouteData> filteredRoutes = availableRoutes.where((route) =>
-    (route.startLocation == startLocation && route.destinationLocation == destinationLocation) ||
-        (route.startLocation == startLocation && route.destinationLocation == 'Prithvi Chowk')
-    ).toList();
+    List<RouteData> filteredRoutes = availableRoutes
+        .where((route) =>
+            (route.startLocation == startLocation &&
+                route.destinationLocation == destinationLocation) ||
+            (route.startLocation == startLocation &&
+                route.destinationLocation == 'Prithvi Chowk'))
+        .toList();
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Choose Route"),
+        title:
+            const Text("Choose Route", style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.green,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
+            const Text(
               "Available Routes:",
               style: TextStyle(color: Colors.green, fontSize: 18),
             ),
             Wrap(
               spacing: 10,
-              children: filteredRoutes.map(
+              children: filteredRoutes
+                  .map(
                     (route) => ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => RouteDetailsPage(routeData: route),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                RouteDetailsPage(routeData: route),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green,
                       ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                  ),
-                  child: Text(
-                    route.selectedRoute,
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ).toList(),
+                      child: Text(
+                        route.selectedRoute,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  )
+                  .toList(),
             ),
           ],
         ),

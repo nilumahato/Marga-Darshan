@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'choose_route_page.dart';// Import the ChooseRoutePage class
+import 'choose_route_page.dart'; 
 
 class UserPage extends StatefulWidget {
+  const UserPage({super.key});
+
   @override
   _UserPageState createState() => _UserPageState();
 }
@@ -14,8 +16,9 @@ class _UserPageState extends State<UserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("User Page"),
+        title: const Text("User Page", style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.green,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -30,7 +33,7 @@ class _UserPageState extends State<UserPage> {
                 });
               },
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             _buildLocationInput(
               labelText: 'Destination Location',
               onChanged: (value) {
@@ -39,7 +42,7 @@ class _UserPageState extends State<UserPage> {
                 });
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
@@ -55,7 +58,7 @@ class _UserPageState extends State<UserPage> {
                   ),
                 );
               },
-              child: Text(
+              child: const Text(
                 "Show Routes",
                 style: TextStyle(color: Colors.white),
               ),
@@ -73,18 +76,17 @@ class _UserPageState extends State<UserPage> {
     return TextFormField(
       onChanged: onChanged,
       cursorColor: Colors.green,
-      style: TextStyle(color: Colors.green), // Set text color to green
+      style: const TextStyle(color: Colors.green), 
       decoration: InputDecoration(
         labelText: labelText,
-        labelStyle: TextStyle(color: Colors.green),
-        focusedBorder: OutlineInputBorder(
+        labelStyle: const TextStyle(color: Colors.green),
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.green),
         ),
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.green),
         ),
       ),
     );
   }
-
 }
