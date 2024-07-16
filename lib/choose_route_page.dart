@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'route_details_page.dart';
 import 'models.dart';
 
@@ -119,16 +120,17 @@ class ChooseRoutePage extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text(
+            Text(
               "Available Routes:",
-              style: TextStyle(color: Colors.green, fontSize: 18),
+              style: TextStyle(color: Colors.green, fontSize: 18.sp),
             ),
+            SizedBox(height: 10.h),
             Wrap(
-              spacing: 10,
+              spacing: 10.w,
               children: filteredRoutes
                   .map(
                     (route) => ElevatedButton(
@@ -143,10 +145,12 @@ class ChooseRoutePage extends StatelessWidget {
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
+                        padding: EdgeInsets.symmetric(
+                            vertical: 12.h, horizontal: 16.w),
                       ),
                       child: Text(
                         route.selectedRoute,
-                        style: const TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.white, fontSize: 16.sp),
                       ),
                     ),
                   )

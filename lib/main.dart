@@ -1,15 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'user_page.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: MargaDarshanPage(),
-      ),
-    ),
+    const MyApp(),
   );
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primaryColor: Colors.green,
+            appBarTheme: const AppBarTheme(
+              color: Colors.green,
+              titleTextStyle: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
+            ),
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                textStyle: const TextStyle(color: Colors.white),
+              ),
+            ),
+            textTheme: const TextTheme(
+              bodyLarge: TextStyle(color: Colors.green),
+              bodyMedium: TextStyle(color: Colors.green),
+              labelLarge: TextStyle(color: Colors.white),
+            ),
+          ),
+          home: const Scaffold(
+            body: MargaDarshanPage(),
+          ),
+        );
+      },
+    );
+  }
 }
 
 class MargaDarshanPage extends StatelessWidget {
@@ -19,17 +55,18 @@ class MargaDarshanPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:
-            const Text("Marga Darshan", style: TextStyle(color: Colors.white)),
+        title: const Text(
+          "Marga Darshan",
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.green,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _adminButton(context),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             _userButton(context),
           ],
         ),
@@ -40,13 +77,12 @@ class MargaDarshanPage extends StatelessWidget {
   Widget _adminButton(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        fixedSize: const Size(300, 50),
-        backgroundColor: Colors.green,
+        fixedSize: Size(300.w, 50.h),
       ),
       onPressed: () {},
-      child: const Text(
+      child: Text(
         "Admin",
-        style: TextStyle(fontSize: 20, color: Colors.white),
+        style: TextStyle(fontSize: 20.sp, color: Colors.white),
       ),
     );
   }
@@ -54,8 +90,7 @@ class MargaDarshanPage extends StatelessWidget {
   Widget _userButton(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        fixedSize: const Size(300, 50),
-        backgroundColor: Colors.green,
+        fixedSize: Size(300.w, 50.h),
       ),
       onPressed: () {
         Navigator.push(
@@ -63,9 +98,9 @@ class MargaDarshanPage extends StatelessWidget {
           MaterialPageRoute(builder: (context) => const UserPage()),
         );
       },
-      child: const Text(
+      child: Text(
         "User",
-        style: TextStyle(fontSize: 20, color: Colors.white),
+        style: TextStyle(fontSize: 20.sp, color: Colors.white),
       ),
     );
   }

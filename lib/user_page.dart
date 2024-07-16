@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'choose_route_page.dart'; 
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'choose_route_page.dart';
+
 
 class UserPage extends StatefulWidget {
   const UserPage({super.key});
@@ -21,7 +23,7 @@ class _UserPageState extends State<UserPage> {
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -33,7 +35,7 @@ class _UserPageState extends State<UserPage> {
                 });
               },
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             _buildLocationInput(
               labelText: 'Destination Location',
               onChanged: (value) {
@@ -42,7 +44,7 @@ class _UserPageState extends State<UserPage> {
                 });
               },
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
@@ -76,15 +78,15 @@ class _UserPageState extends State<UserPage> {
     return TextFormField(
       onChanged: onChanged,
       cursorColor: Colors.green,
-      style: const TextStyle(color: Colors.green), 
+      style: TextStyle(color: Colors.green, fontSize: 16.sp),
       decoration: InputDecoration(
         labelText: labelText,
-        labelStyle: const TextStyle(color: Colors.green),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.green),
+        labelStyle: TextStyle(color: Colors.green, fontSize: 16.sp),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.green, width: 1.5.w),
         ),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.green),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.green, width: 1.5.w),
         ),
       ),
     );

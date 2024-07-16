@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'models.dart'; 
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'models.dart';
 
 class RouteDetailsPage extends StatelessWidget {
   final RouteData routeData;
@@ -16,16 +17,16 @@ class RouteDetailsPage extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildRouteHeader(routeData.selectedRoute),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             _buildStopsInfo(routeData.stops),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             const Divider(color: Colors.green),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             _buildFaresSection(routeData.fare),
           ],
         ),
@@ -36,8 +37,8 @@ class RouteDetailsPage extends StatelessWidget {
   Widget _buildRouteHeader(String route) {
     return Text(
       "Route: $route",
-      style: const TextStyle(
-          fontSize: 24, fontWeight: FontWeight.bold, color: Colors.green),
+      style: TextStyle(
+          fontSize: 24.sp, fontWeight: FontWeight.bold, color: Colors.green),
     );
   }
 
@@ -45,16 +46,20 @@ class RouteDetailsPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           "Stops:",
           style: TextStyle(
-              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.green),
+              fontSize: 20.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.green),
         ),
-        const SizedBox(height: 5),
+        SizedBox(height: 5.h),
         Text(
           stops.map((stop) => stop.name).join(" - "),
-          style: const TextStyle(
-              fontSize: 18, color: Colors.green, fontStyle: FontStyle.italic),
+          style: TextStyle(
+              fontSize: 18.sp,
+              color: Colors.green,
+              fontStyle: FontStyle.italic),
         ),
       ],
     );
@@ -64,14 +69,16 @@ class RouteDetailsPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           "Fares",
           style: TextStyle(
-              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.green),
+              fontSize: 20.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.green),
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: 10.h),
         _buildFareRow("With Student ID:", "Rs. ${fare.withStudentId}"),
-        const SizedBox(height: 5),
+        SizedBox(height: 5.h),
         _buildFareRow("Without Student ID:", "Rs. ${fare.withoutStudentId}"),
       ],
     );
@@ -83,12 +90,14 @@ class RouteDetailsPage extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(fontSize: 18, color: Colors.green),
+          style: TextStyle(fontSize: 18.sp, color: Colors.green),
         ),
         Text(
           amount,
-          style: const TextStyle(
-              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.green),
+          style: TextStyle(
+              fontSize: 20.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.green),
         ),
       ],
     );
