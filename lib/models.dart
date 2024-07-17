@@ -1,3 +1,26 @@
+class StopData {
+  final String name;
+
+  StopData({required this.name});
+
+  factory StopData.fromJson(Map<String, dynamic> json) {
+    return StopData(name: json['name']);
+  }
+}
+
+class FareData {
+  final double withStudentId;
+  final double withoutStudentId;
+
+  FareData({required this.withStudentId, required this.withoutStudentId});
+
+  factory FareData.fromJson(Map<String, dynamic> json) {
+    return FareData(
+      withStudentId: json['withStudentId'].toDouble(),
+      withoutStudentId: json['withoutStudentId'].toDouble(),
+    );
+  }
+}
 
 class RouteData {
   final String startLocation;
@@ -13,17 +36,18 @@ class RouteData {
     required this.stops,
     required this.fare,
   });
-}
 
-class StopData {
-  final String name;
+  factory RouteData.fromJson(Map<String, dynamic> json) {
+    var stopsFromJson = json['stops'] as List;
+    List<StopData> stopsList =
+        stopsFromJson.map((i) => StopData.fromJson(i)).toList();
 
-  StopData({required this.name});
-}
-
-class FareData {
-  final double withStudentId;
-  final double withoutStudentId;
-
-  FareData({required this.withStudentId, required this.withoutStudentId});
+    return RouteData(
+      startLocation: json['startLocation'],
+      destinationLocation: json['destinationLocation'],
+      selectedRoute: json['selectedRoute'],
+      stops: stopsList,
+      fare: FareData.fromJson(json['fare']),
+    );
+  }
 }

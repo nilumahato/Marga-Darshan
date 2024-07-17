@@ -1,0 +1,108 @@
+[
+    {
+      "startLocation": "Bagar",
+      "destinationLocation": "Prithvichock",
+      "selectedRoute": "Route 1: Bagar - Airport",
+      "stops": [
+        {"name": "Bagar"},
+        {"name": "Nadipur"},
+        {"name": "Mahendrapool"},
+        {"name": "Chipledhunga"},
+        {"name": "New Road"},
+        {"name": "Sabhagriha Chock"},
+        {"name": "Prithvichock"}
+      ],
+      "fare": {
+        "withStudentId": 20.0,
+        "withoutStudentId": 35.0
+      }
+    },
+    {
+      "startLocation": "Bagar",
+      "destinationLocation": "Prithvichock",
+      "selectedRoute": "Route 2: Bagar - Lakeside",
+      "stops": [
+        {"name": "Bagar"},
+        {"name": "Nadipur"},
+        {"name": "Mahendrapool"},
+        {"name": "Nayabazar"},
+        {"name": "Prithvichock"}
+      ],
+      "fare": {
+        "withStudentId": 15.0,
+        "withoutStudentId": 30.0
+      }
+    },
+    {
+      "startLocation": "Bagar",
+      "destinationLocation": "Khalte",
+      "selectedRoute": "Route 1: Bagar - Khalte",
+      "stops": [
+        {"name": "Bagar"},
+        {"name": "Aamirtchock"},
+        {"name": "Khalte"}
+      ],
+      "fare": {
+        "withStudentId": 30.0,
+        "withoutStudentId": 45.0
+      }
+    },
+    {
+      "startLocation": "Lakeside",
+      "destinationLocation": "Mahendrapool",
+      "selectedRoute": "Route 1: Lakeside - Bagar",
+      "stops": [
+        {"name": "Lakeside"},
+        {"name": "Rastra Bank Chock"},
+        {"name": "Birauta"},
+        {"name": "Pokhara Airport"},
+        {"name": "Prithvichock"},
+        {"name": "Sabhagriha Chock"},
+        {"name": "Mahendrapool"}
+      ],
+      "fare": {
+        "withStudentId": 35.0,
+        "withoutStudentId": 55.0
+      }
+    },
+    {
+      "startLocation": "Lakeside",
+      "destinationLocation": "Mahendrapool",
+      "selectedRoute": "Route 2: Lakeside - Mahendra Gufa",
+      "stops": [
+        {"name": "Lakeside"},
+        {"name": "Rastra Bank Chock"},
+        {"name": "Ratan Chock"},
+        {"name": "Srijana Chock"},
+        {"name": "Sabhagriha Chock"},
+        {"name": "Mahendrapool"}
+      ],
+      "fare": {
+        "withStudentId": 25.0,
+        "withoutStudentId": 40.0
+      }
+    },
+    {
+      "startLocation": "Lamachaur",
+      "destinationLocation": "Birauta",
+      "selectedRoute": "Route 1: Lamchaur - Chorepatan",
+      "stops": [
+        {"name": "Lamachaur"},
+        {"name": "Deep"},
+        {"name": "Bagar"},
+        {"name": "Nadipur"},
+        {"name": "Mahendrapool"},
+        {"name": "New Road"},
+        {"name": "Sabhagriha Chock"},
+        {"name": "Srijana Chock"},
+        {"name": "Ratan Chock"},
+        {"name": "Rastra Bank Chock"},
+        {"name": "Birauta"}
+      ],
+      "fare": {
+        "withStudentId": 30.0,
+        "withoutStudentId": 55.0
+      }
+    }
+  ]
+  

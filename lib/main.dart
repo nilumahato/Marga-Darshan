@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'user_page.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    systemNavigationBarColor: Colors.white,
+    statusBarColor: Colors.green,
+    systemNavigationBarIconBrightness: Brightness.light,
+  ));
+
   runApp(
     const MyApp(),
   );
@@ -38,6 +45,7 @@ class MyApp extends StatelessWidget {
               bodyMedium: TextStyle(color: Colors.green),
               labelLarge: TextStyle(color: Colors.white),
             ),
+            scaffoldBackgroundColor: Colors.white,
           ),
           home: const Scaffold(
             body: MargaDarshanPage(),

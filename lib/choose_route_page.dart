@@ -1,9 +1,11 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'route_details_page.dart';
 import 'models.dart';
 
-class ChooseRoutePage extends StatelessWidget {
+class ChooseRoutePage extends StatefulWidget {
   final String startLocation;
   final String destinationLocation;
 
@@ -13,102 +15,33 @@ class ChooseRoutePage extends StatelessWidget {
       required this.destinationLocation});
 
   @override
-  Widget build(BuildContext context) {
-    List<RouteData> availableRoutes = [
-      RouteData(
-        startLocation: 'Bagar',
-        destinationLocation: 'Prithvichock',
-        selectedRoute: 'Route 1: Bagar - Airport',
-        stops: [
-          StopData(name: 'Bagar'),
-          StopData(name: 'Nadipur'),
-          StopData(name: 'Mahendrapool'),
-          StopData(name: 'Chipledhunga'),
-          StopData(name: 'New Road'),
-          StopData(name: 'Sabhagriha Chock'),
-          StopData(name: 'Prithvichock'),
-        ],
-        fare: FareData(withStudentId: 20.0, withoutStudentId: 35.0),
-      ),
-      RouteData(
-        startLocation: 'Bagar',
-        destinationLocation: 'Prithvichock',
-        selectedRoute: 'Route 2: Bagar - Lakeside',
-        stops: [
-          StopData(name: 'Bagar'),
-          StopData(name: 'Nadipur'),
-          StopData(name: 'Mahendrapool'),
-          StopData(name: 'Nayabazar'),
-          StopData(name: 'Prithvichock'),
-        ],
-        fare: FareData(withStudentId: 15.0, withoutStudentId: 30.0),
-      ),
-      RouteData(
-        startLocation: 'Bagar',
-        destinationLocation: 'Khalte',
-        selectedRoute: 'Route 1: Bagar - Khalte',
-        stops: [
-          StopData(name: 'Bagar'),
-          StopData(name: 'Aamirtchock'),
-          StopData(name: 'Khalte'),
-        ],
-        fare: FareData(withStudentId: 30.0, withoutStudentId: 45.0),
-      ),
-      RouteData(
-        startLocation: 'Lakeside',
-        destinationLocation: 'Mahendrapool',
-        selectedRoute: 'Route 1: Lakeside - Bagar',
-        stops: [
-          StopData(name: 'Lakeside'),
-          StopData(name: 'Rastra Bank Chock'),
-          StopData(name: 'Birauta'),
-          StopData(name: 'Pokhara Airport'),
-          StopData(name: 'Prithvichock'),
-          StopData(name: 'Sabhagriha Chock'),
-          StopData(name: 'Mahendrapool'),
-        ],
-        fare: FareData(withStudentId: 35.0, withoutStudentId: 55.0),
-      ),
-      RouteData(
-        startLocation: 'Lakeside',
-        destinationLocation: 'Mahendrapool',
-        selectedRoute: 'Route 2: Lakeside - Mahendra Gufa',
-        stops: [
-          StopData(name: 'Lakeside'),
-          StopData(name: 'Rastra Bank Chock'),
-          StopData(name: 'Ratan Chock'),
-          StopData(name: 'Srijana Chock'),
-          StopData(name: 'Sabhagriha Chock'),
-          StopData(name: 'Mahendrapool'),
-        ],
-        fare: FareData(withStudentId: 25.0, withoutStudentId: 40.0),
-      ),
-      RouteData(
-        startLocation: 'Lamachaur',
-        destinationLocation: 'Birauta',
-        selectedRoute: 'Route 1: Lamchaur - Chorepatan',
-        stops: [
-          StopData(name: 'Lamachaur'),
-          StopData(name: 'Deep'),
-          StopData(name: 'Bagar'),
-          StopData(name: 'Nadipur'),
-          StopData(name: 'Mahendrapool'),
-          StopData(name: 'New Road'),
-          StopData(name: 'Sabhagriha Chock'),
-          StopData(name: 'Srijana Chock'),
-          StopData(name: 'Ratan Chock'),
-          StopData(name: 'Rastra Bank Chock'),
-          StopData(name: 'Birauta'),
-        ],
-        fare: FareData(withStudentId: 30.0, withoutStudentId: 55.0),
-      ),
-    ];
+  _ChooseRoutePageState createState() => _ChooseRoutePageState();
+}
 
+class _ChooseRoutePageState extends State<ChooseRoutePage> {
+  List<RouteData> availableRoutes = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadRoutes();
+  }
+
+  Future<void> loadRoutes() async {
+    final String response = await rootBundle.loadString('assets/routes.json');
+    final List<dynamic> data = jsonDecode(response);
+    setState(() {
+      availableRoutes = data.map((json) => RouteData.fromJson(json)).toList();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     List<RouteData> filteredRoutes = availableRoutes
         .where((route) =>
-            (route.startLocation == startLocation &&
-                route.destinationLocation == destinationLocation) ||
-            (route.startLocation == startLocation &&
+            (route.startLocation == widget.startLocation &&
+                route.destinationLocation == widget.destinationLocation) ||
+            (route.startLocation == widget.startLocation &&
                 route.destinationLocation == 'Prithvi Chowk'))
         .toList();
 
@@ -131,6 +64,7 @@ class ChooseRoutePage extends StatelessWidget {
             SizedBox(height: 10.h),
             Wrap(
               spacing: 10.w,
+              runSpacing: 10.h,
               children: filteredRoutes
                   .map(
                     (route) => ElevatedButton(
